@@ -1,6 +1,12 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { ApolloProvider } from '@apollo/react-hooks'
+import App from './App'
+import { client } from './client'
 
-import { Hello } from './Home'
-
-ReactDOM.render(<Hello compiler="TypeScript" framework="React" />, document.getElementById('root'))
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+)
