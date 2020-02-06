@@ -16,7 +16,7 @@ const VIEWER = gql`
 `
 
 const App = () => {
-  const { loading, error, data } = useQuery<ViewerData>(VIEWER)
+  const { loading, error, data } = useQuery<ViewerData, {}>(VIEWER)
 
   if (loading) {
     return <p>Loading...</p>
