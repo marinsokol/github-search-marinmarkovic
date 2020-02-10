@@ -6,6 +6,8 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
 
+import './toolbar.css'
+
 const Toolbar = (props: { history: History }) => {
   const [search, setState] = useState<string>('')
 
@@ -14,7 +16,7 @@ const Toolbar = (props: { history: History }) => {
 
   return (
     <React.Fragment>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">Github Search</Navbar.Brand>
         <Dropdown>
           <div className="form-inline">

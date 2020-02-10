@@ -19,7 +19,7 @@ export interface SearchRepositories {
 
 export const searchRepositories = gql`
   query($search: String!) {
-    search(query: $search, type: REPOSITORY, first: 20) {
+    search(query: $search, type: REPOSITORY, first: 40) {
       edges {
         node {
           ... on Repository {

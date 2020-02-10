@@ -1,14 +1,17 @@
 import React from 'react'
-import { Link, match as Match } from 'react-router-dom'
+import { match as Match } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import Card from 'react-bootstrap/Card'
+import Spinner from 'react-bootstrap/Spinner'
 import { searchRepositories, SearchRepositories } from '../../client/queries/repositories'
 
+import './home.css'
+
 const Home = (props: { match: Match<{ search: string }> }) => {
-  const { match } = props
-  if (!match.params.search) {
+  const { params } = props.match
+  if (!params.search) {
     return (
-      <div>
+      <div className="home-containter">
         <Card>
           <Card.Body>Search for repositories</Card.Body>
         </Card>
@@ -16,12 +19,38 @@ const Home = (props: { match: Match<{ search: string }> }) => {
     )
   }
 
-  const { loading, error, data } = useQuery<SearchRepositories>(searchRepositories, { variables: { search: 'hah' } })
-  console.log('TCL: Home -> loading, error, data', loading, error, data)
+  const { loading, error, data } = useQuery<SearchRepositories>(searchRepositories, {
+    variables: { search: params.search }
+  })
   return (
     <div>
-      Repositories
-      <Link to="/user">User</Link>
+      {!loading && !error && <div className="home-title">Search results for: {params.search}</div>}
+      <div className="home-containter">
+        {loading && (
+          <Card>
+            <Card.Body className="loading">
+              <Spinner animation="grow" />
+              Loading...
+            </Card.Body>
+          </Card>
+        )}
+        {error && (
+          <Card>
+            <Card.Body className="error">ff000070</Card.Body>
+          </Card>
+        )}
+        {!loading &&
+          !error &&
+          data.search.edges.map(({ node }) => (
+            <Card key={node.id}>
+              <Card.Title>{node.name}</Card.Title>
+              <Card.Body>{node.description}</Card.Body>
+              <Card.Link href={node.url} target="_blank">
+                Visit repo on Github
+              </Card.Link>
+            </Card>
+          ))}
+      </div>
     </div>
   )
 }
