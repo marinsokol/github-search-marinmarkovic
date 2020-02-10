@@ -10,7 +10,8 @@ const App = () => {
       <React.Fragment>
         <Toolbar />
         <Switch>
-          <Route path="/user" component={User} />
+          <Route path="/user/:id" component={User} />
+          <Route path="/:search" component={Home} />
           <Route path="/" component={Home} />
         </Switch>
       </React.Fragment>

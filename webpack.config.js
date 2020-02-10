@@ -36,10 +36,6 @@ module.exports = () => {
         }
       ]
     },
-    plugins: [new HtmlWebpackPlugin({ template: './src/index.html' }), new webpack.DefinePlugin(envKeys)],
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    }
+    plugins: [new HtmlWebpackPlugin({ template: './src/index.html' }), new webpack.DefinePlugin(envKeys)]
   }
 }

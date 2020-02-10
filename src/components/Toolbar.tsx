@@ -10,7 +10,7 @@ const Toolbar = (props: { history: History }) => {
   const [search, setState] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => setState(e.target.value)
-  const onSearch = () => props.history.push(`/?search=${search}`)
+  const onSearch = () => props.history.push(`/${search}`)
 
   return (
     <React.Fragment>
