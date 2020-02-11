@@ -1,4 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 const dotenv = require('dotenv')
@@ -12,12 +11,12 @@ module.exports = () => {
 
   return {
     devtool: 'source-map',
-    output: {
-      path: path.resolve('./dist'),
-      filename: 'main.js'
-    },
     resolve: {
       extensions: ['.ts', '.tsx', '.js']
+    },
+    output: {
+      path: path.resolve('./public/dist'),
+      filename: 'main.js'
     },
     module: {
       rules: [

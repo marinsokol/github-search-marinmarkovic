@@ -36,9 +36,9 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/app.js",
     "build": "webpack --mode production",
-    "dev": "concurrently --kill-others \" webpack -w --mode development\" \"node server.js\"",
+    "dev": "concurrently --kill-others \" webpack -w --mode development\" \"node server/app.js\"",
     "lint": "tslint ./src/**/*.ts{,x}",
     "lint:fix": "npm run lint --fix"
   }
