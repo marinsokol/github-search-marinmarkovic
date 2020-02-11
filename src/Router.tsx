@@ -1,22 +1,22 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './routes/Home'
 import User from './routes/User'
 import Toolbar from './components/Toolbar'
 
-const App = () => {
+const Router = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <React.Fragment>
         <Toolbar />
         <Switch>
-          <Route path="/user/:id" component={User} />
+          <Route path="/user/:userId" component={User} />
           <Route path="/:search" component={Home} />
           <Route path="/" component={Home} />
         </Switch>
       </React.Fragment>
-    </Router>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default Router

@@ -3,7 +3,11 @@ import { match as Match } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
-import { searchRepositories, SearchRepositories } from '../../client/queries/repositories'
+import {
+  searchRepositories,
+  SearchRepositories,
+  SearchRepositoriesVariable
+} from '../../client/queries/searchRepositories'
 
 import './home.css'
 
@@ -19,7 +23,7 @@ const Home = (props: { match: Match<{ search: string }> }) => {
     )
   }
 
-  const { loading, error, data } = useQuery<SearchRepositories>(searchRepositories, {
+  const { loading, error, data } = useQuery<SearchRepositories, SearchRepositoriesVariable>(searchRepositories, {
     variables: { search: params.search }
   })
   return (

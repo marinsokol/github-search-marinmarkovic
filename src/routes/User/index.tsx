@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const User = () => {
+const User = (props: any) => {
+  console.log('TCL: User -> props', props)
   return (
     <div>
       USER

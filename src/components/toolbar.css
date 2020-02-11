@@ -1,3 +1,16 @@
-.navbar {
+.toolbar.navbar {
   justify-content: space-between;
+}
+
+.toolbar .dropdown {
+  width: 250px;
+}
+
+.toolbar .dropdown-menu {
+  width: 100%;
+}
+
+.toolbar a {
+  color: black;
+  text-decoration: none;
 }

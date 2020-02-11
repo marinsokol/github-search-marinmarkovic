@@ -17,6 +17,10 @@ export interface SearchRepositories {
   }
 }
 
+export interface SearchRepositoriesVariable {
+  search: string
+}
+
 export const searchRepositories = gql`
   query($search: String!) {
     search(query: $search, type: REPOSITORY, first: 40) {

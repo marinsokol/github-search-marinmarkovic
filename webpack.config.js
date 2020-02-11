@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const path = require('path')
 const dotenv = require('dotenv')
 
 module.exports = () => {
@@ -11,6 +12,10 @@ module.exports = () => {
 
   return {
     devtool: 'source-map',
+    output: {
+      path: path.resolve('./dist'),
+      filename: 'main.js'
+    },
     resolve: {
       extensions: ['.ts', '.tsx', '.js']
     },
@@ -36,6 +41,6 @@ module.exports = () => {
         }
       ]
     },
-    plugins: [new HtmlWebpackPlugin({ template: './src/index.html' }), new webpack.DefinePlugin(envKeys)]
+    plugins: [new webpack.DefinePlugin(envKeys)]
   }
 }
