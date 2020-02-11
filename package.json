@@ -39,7 +39,7 @@
     "start": "node server.js",
     "build": "webpack --mode production",
     "dev": "concurrently --kill-others \" webpack -w --mode development\" \"node server.js\"",
-    "lint": "tslint ./src/**/*",
+    "lint": "tslint ./src/**/*.ts{,x}",
     "lint:fix": "npm run lint --fix"
   }
 }

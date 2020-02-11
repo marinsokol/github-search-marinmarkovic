@@ -1,13 +1,33 @@
 .home-title {
   font-weight: bold;
   padding: 20px 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-title svg {
+  width: 32px;
+  height: 32px;
+}
+
+.home-title svg.selected {
+  background-color: gray;
+  border-radius: 5px;
+  color: white;
 }
 
 .home-containter {
   padding: 20px;
   display: flex;
+}
+
+.home-containter.grid {
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.home-containter.list {
+  flex-direction: column;
 }
 
 .home-containter .loading {
@@ -26,6 +46,10 @@
   margin-bottom: 20px;
   margin-right: 20px;
   width: calc(25% - 20px);
+}
+
+.home-containter.list .card {
+  width: 100%;
 }
 
 .home-containter .card-title {

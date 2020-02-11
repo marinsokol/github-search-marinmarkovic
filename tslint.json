@@ -6,6 +6,7 @@
   ],
   "rules": {
     "jsx-wrap-multiline": false,
-    "no-submodule-imports": false
+    "no-submodule-imports": false,
+    "jsx-no-lambda": false
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { match as Match } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import Card from 'react-bootstrap/Card'
@@ -25,21 +25,22 @@ const Home = (props: { match: Match<{ search: string }> }) => {
     )
   }
 
+  const [view, setView] = useState<'grid' | 'list'>('grid')
   const { loading, error, data } = useQuery<SearchRepositories, SearchRepositoriesVariable>(searchRepositories, {
     variables: { search: params.search }
   })
   return (
     <div>
       {!loading && !error && (
-        <div>
-          <div className="home-title">Search results for: {params.search}</div>
+        <div className="home-title">
+          <div>Search results for: {params.search}</div>
           <div>
-            <List />
-            <Grid />
+            <List className={view === 'list' ? 'selected' : ''} onClick={() => setView('list')} />
+            <Grid className={view === 'grid' ? 'selected' : ''} onClick={() => setView('grid')} />
           </div>
         </div>
       )}
-      <div className="home-containter">
+      <div className={`home-containter ${view}`}>
         {loading && (
           <Card>
             <Card.Body className="loading">
