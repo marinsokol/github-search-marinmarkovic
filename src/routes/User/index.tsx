@@ -6,6 +6,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { getUser, GetUserVariable, GetUser } from '../../client/queries/user'
+import RepositoryCards from '../../components/RepositoryCards'
 
 import './user.css'
 
@@ -46,7 +47,10 @@ const User = (props: { match: Match<{ userId: string }> }) => {
             </Col>
           </Row>
           <div>
-            <div>Repositories: </div>
+            <h5>Repositories: </h5>
+            <div>
+              <RepositoryCards repositories={data.user.repositories.edges} />
+            </div>
           </div>
         </React.Fragment>
       )}

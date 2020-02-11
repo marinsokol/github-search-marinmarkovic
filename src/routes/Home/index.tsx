@@ -8,6 +8,7 @@ import {
   SearchRepositories,
   SearchRepositoriesVariable
 } from '../../client/queries/searchRepositories'
+import RepositoryCards from '../../components/RepositoryCards'
 
 import './home.css'
 
@@ -43,17 +44,7 @@ const Home = (props: { match: Match<{ search: string }> }) => {
             <Card.Body className="error">ff000070</Card.Body>
           </Card>
         )}
-        {!loading &&
-          !error &&
-          data.search.edges.map(({ node }) => (
-            <Card key={node.id}>
-              <Card.Title>{node.name}</Card.Title>
-              <Card.Body>{node.description}</Card.Body>
-              <Card.Link href={node.url} target="_blank">
-                Visit repo on Github
-              </Card.Link>
-            </Card>
-          ))}
+        {!loading && !error && <RepositoryCards repositories={data.search.edges} />}
       </div>
     </div>
   )

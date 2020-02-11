@@ -7043,7 +7043,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".user-containter {\n  padding: 20px;\n}\n\n.user-containter .loading {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n}\n\n.user-containter .error {\n  background-color: #ff000070;\n  color: red;\n}\n\n.user-containter img {\n  width: 250px;\n}\n", ""]);
+exports.push([module.i, ".user-containter {\n  padding: 20px;\n}\n\n.user-containter .loading {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n}\n\n.user-containter .error {\n  background-color: #ff000070;\n  color: red;\n}\n\n.user-containter img {\n  width: 250px;\n}\n\n.user-containter h5,\n.user-containter .card {\n  margin-top: 20px;\n}\n\n.user-containter .card-title {\n  padding-left: 1.25rem;\n  padding-top: 0.6rem;\n}\n\n.user-containter .card-link {\n  padding-left: 1.25rem;\n  padding-bottom: 0.6rem;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -73402,7 +73402,7 @@ var client = new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["default"]({
     request: function (operation) {
         operation.setContext({
             headers: {
-                authorization: "Bearer " + "6f00b105c65aa596069bb1626bb4b7af5c24cec4"
+                authorization: "Bearer " + "a9f70bc686edb472c66be309aa97d52e98140582"
             }
         });
     }
@@ -73473,6 +73473,32 @@ var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || func
 
 var getUser = Object(apollo_boost__WEBPACK_IMPORTED_MODULE_0__["gql"])(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query($login: String!) {\n    user(login: $login) {\n      login\n      id\n      name\n      bio\n      email\n      avatarUrl\n      repositories(first: 10) {\n        edges {\n          node {\n            id\n            name\n            description\n            url\n          }\n        }\n      }\n    }\n  }\n"], ["\n  query($login: String!) {\n    user(login: $login) {\n      login\n      id\n      name\n      bio\n      email\n      avatarUrl\n      repositories(first: 10) {\n        edges {\n          node {\n            id\n            name\n            description\n            url\n          }\n        }\n      }\n    }\n  }\n"])));
 var templateObject_1;
+
+
+/***/ }),
+
+/***/ "./src/components/RepositoryCards.tsx":
+/*!********************************************!*\
+  !*** ./src/components/RepositoryCards.tsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+
+
+var RepositoryCards = function (props) { return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.repositories.map(function (_a) {
+    var node = _a.node;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"], { key: node.id },
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, node.name),
+        node.description && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, node.description),
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Link, { href: node.url, target: "_blank" }, "Visit repo on Github")));
+}))); };
+/* harmony default export */ __webpack_exports__["default"] = (RepositoryCards);
 
 
 /***/ }),
@@ -73667,8 +73693,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
 /* harmony import */ var _client_queries_searchRepositories__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../client/queries/searchRepositories */ "./src/client/queries/searchRepositories.ts");
-/* harmony import */ var _home_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home.css */ "./src/routes/Home/home.css");
-/* harmony import */ var _home_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_home_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_RepositoryCards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/RepositoryCards */ "./src/components/RepositoryCards.tsx");
+/* harmony import */ var _home_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home.css */ "./src/routes/Home/home.css");
+/* harmony import */ var _home_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_home_css__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -73696,15 +73724,7 @@ var Home = function (props) {
                     "Loading..."))),
             error && (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"], null,
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"].Body, { className: "error" }, "ff000070"))),
-            !loading &&
-                !error &&
-                data.search.edges.map(function (_a) {
-                    var node = _a.node;
-                    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"], { key: node.id },
-                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"].Title, null, node.name),
-                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, node.description),
-                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"].Link, { href: node.url, target: "_blank" }, "Visit repo on Github")));
-                }))));
+            !loading && !error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RepositoryCards__WEBPACK_IMPORTED_MODULE_5__["default"], { repositories: data.search.edges }))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
@@ -73728,8 +73748,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
 /* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var _client_queries_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../client/queries/user */ "./src/client/queries/user.ts");
-/* harmony import */ var _user_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user.css */ "./src/routes/User/user.css");
-/* harmony import */ var _user_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_user_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_RepositoryCards__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/RepositoryCards */ "./src/components/RepositoryCards.tsx");
+/* harmony import */ var _user_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user.css */ "./src/routes/User/user.css");
+/* harmony import */ var _user_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_user_css__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -73766,7 +73788,9 @@ var User = function (props) {
                                 "Bio: ",
                                 data.user.bio))))),
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Repositories: "))))));
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Repositories: "),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null,
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RepositoryCards__WEBPACK_IMPORTED_MODULE_7__["default"], { repositories: data.user.repositories.edges })))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (User);
 

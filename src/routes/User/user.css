@@ -17,3 +17,18 @@
 .user-containter img {
   width: 250px;
 }
+
+.user-containter h5,
+.user-containter .card {
+  margin-top: 20px;
+}
+
+.user-containter .card-title {
+  padding-left: 1.25rem;
+  padding-top: 0.6rem;
+}
+
+.user-containter .card-link {
+  padding-left: 1.25rem;
+  padding-bottom: 0.6rem;
+}
