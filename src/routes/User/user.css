@@ -1,0 +1,19 @@
+.user-containter {
+  padding: 20px;
+}
+
+.user-containter .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-containter .error {
+  background-color: #ff000070;
+  color: red;
+}
+
+.user-containter img {
+  width: 250px;
+}
