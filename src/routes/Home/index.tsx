@@ -3,6 +3,7 @@ import { match as Match } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
+import { List, Grid } from 'react-bootstrap-icons'
 import {
   searchRepositories,
   SearchRepositories,
@@ -29,7 +30,15 @@ const Home = (props: { match: Match<{ search: string }> }) => {
   })
   return (
     <div>
-      {!loading && !error && <div className="home-title">Search results for: {params.search}</div>}
+      {!loading && !error && (
+        <div>
+          <div className="home-title">Search results for: {params.search}</div>
+          <div>
+            <List />
+            <Grid />
+          </div>
+        </div>
+      )}
       <div className="home-containter">
         {loading && (
           <Card>
@@ -41,7 +50,7 @@ const Home = (props: { match: Match<{ search: string }> }) => {
         )}
         {error && (
           <Card>
-            <Card.Body className="error">ff000070</Card.Body>
+            <Card.Body className="error">{error.message}</Card.Body>
           </Card>
         )}
         {!loading && !error && <RepositoryCards repositories={data.search.edges} />}
