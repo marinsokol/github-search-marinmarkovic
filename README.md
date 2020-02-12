@@ -1,5 +1,8 @@
 # GITHUB SEARCH
 
+Web application built using [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Apollo Client](https://www.apollographql.com/docs/). \
+ I used [React Bootstrap](https://react-bootstrap.netlify.com/) to simplify UI development.
+
 ## Table of Contents
 
 1. [Installation](#installation)
@@ -19,6 +22,15 @@ When that's done, install the project dependencies. It is recommended that you u
 ```bash
 $ yarn  # Install project dependencies (or `npm install`)
 ```
+
+You also need to add `.env` file containing API url and key in root of project
+
+```
+API_URL=<url-of-github-api>
+API_KEY=<personal-ccess-token>
+```
+
+You can get your personal access token following [this link](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 
 ## Running the Project
 
@@ -44,20 +56,21 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 │   └── index.html           # Main HTML page container for app
 ├── server                 # Express application
 │   └── app.js               # Server application entry point
-└── src                    # Application source code
-    ├── client               # Apollo client folder
-    │   ├── queries            # Folder containing GraphQL queries
-    │   └── index.ts           # Creates client instance
-    ├── components           # Global Reusable Components
-    ├── routes               # Main route definitions
-    │   ├── Home               # Route
-    │   │   ├── home.css         # Route styling
-    │   │   ├── index.tsx        # Route component
-    │   ├── User               # Route
-    │   │   ├── user.css         # Route styling
-    │   │   ├── index.tsx        # Route component
-    ├── index.tsx            # Main setup and render of application
-    └── Router.tsx           # Application router
+├── src                    # Application source code
+│   ├── client               # Apollo client folder
+│   │   ├── queries            # Folder containing GraphQL queries
+│   │   └── index.ts           # Creates client instance
+│   ├── components           # Global Reusable Components
+│   ├── routes               # Main route definitions
+│   │   ├── Home               # Route
+│   │   │   ├── home.css         # Route styling
+│   │   │   ├── index.tsx        # Route component
+│   │   ├── User               # Route
+│   │   │   ├── user.css         # Route styling
+│   │   │   ├── index.tsx        # Route component
+│   ├── index.tsx            # Main setup and render of application
+│   └── Router.tsx           # Application router
+└── .env                   # File containing API url and key
 ```
 
 ## Deployment
