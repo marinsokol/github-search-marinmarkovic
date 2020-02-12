@@ -25,6 +25,7 @@ export const searchUser = gql`
         node {
           ... on User {
             login
+            __typename
           }
         }
       }

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { History } from 'history'
 import { debounce } from 'lodash'
@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import FormControl from 'react-bootstrap/FormControl'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { useQuery } from '@apollo/react-hooks'
-import { searchUser, SearchUsersVariable, SearchUser } from '../client/queries/searchUser'
+import { searchUser, SearchUsersVariable, SearchUser } from '../../client/queries/searchUser'
 
 import './toolbar.css'
 
@@ -20,7 +20,10 @@ const Toolbar = (props: { history: History }) => {
   const { loading, error, data } = useQuery<SearchUser, SearchUsersVariable>(searchUser, {
     variables: { search: state.query }
   })
-  const user = !loading && !error ? data.search.edges.find(({ node }) => node.login.indexOf(state.search) === 0) : null
+  const user =
+    !loading && !error && data && data.search
+      ? data.search.edges.find(({ node }) => node.login && node.login.indexOf(state.search) === 0)
+      : null
 
   const onQueryChange = debounce(() => setState(s => ({ ...s, query: s.search })), 1000)
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,13 +35,24 @@ const Toolbar = (props: { history: History }) => {
     setState(initState)
     props.history.push(`/${state.search}`)
   }
+  const onSearchPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key && e.key !== 'Enter') return
+    onSearch()
+  }
 
   return (
     <React.Fragment>
       <Navbar bg="dark" variant="dark" className="toolbar">
         <Navbar.Brand href="/">Github Search</Navbar.Brand>
         <Dropdown show={Boolean(state.search.length)}>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" value={state.search} onChange={onChange} />
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            value={state.search}
+            onChange={onChange}
+            onKeyPress={onSearchPress}
+          />
           <Dropdown.Menu show={Boolean(state.search.length)}>
             <Dropdown.Item onClick={onSearch} as="div">
               <div>Search repositories</div>

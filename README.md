@@ -62,8 +62,8 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 │   │   └── index.ts           # Creates client instance
 │   ├── components           # Global Reusable Components
 │   ├── routes               # Main route definitions
-│   │   ├── Home               # Route
-│   │   │   ├── home.css         # Route styling
+│   │   ├── Repositories       # Route
+│   │   │   ├── repositories.css # Route styling
 │   │   │   ├── index.tsx        # Route component
 │   │   ├── User               # Route
 │   │   │   ├── user.css         # Route styling

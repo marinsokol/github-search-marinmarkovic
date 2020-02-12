@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Home from './routes/Home'
+import Repositories from './routes/Repositories'
 import User from './routes/User'
 import Toolbar from './components/Toolbar'
 
@@ -11,8 +11,8 @@ const Router = () => {
         <Toolbar />
         <Switch>
           <Route path="/user/:userId" component={User} />
-          <Route path="/:search" component={Home} />
-          <Route path="/" component={Home} />
+          <Route path="/:search" component={Repositories} />
+          <Route path="/" component={Repositories} />
         </Switch>
       </React.Fragment>
     </BrowserRouter>

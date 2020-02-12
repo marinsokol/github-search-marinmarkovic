@@ -12,9 +12,9 @@ import {
 } from '../../client/queries/searchRepositories'
 import RepositoryCards from '../../components/RepositoryCards'
 
-import './home.css'
+import './repositories.css'
 
-const Home = (props: { match: Match<{ search: string }> }) => {
+const Repositories = (props: { match: Match<{ search: string }> }) => {
   const {
     params: { search }
   } = props.match
@@ -44,6 +44,12 @@ const Home = (props: { match: Match<{ search: string }> }) => {
   const getSortedRepositories = () => {
     switch (sortBy) {
       case 'match':
+        /**
+         * Custom algorithm for sorting by best match.
+         * If search text exists in name, it is assigns a value of 20000,
+         * if search text exists in description it is assigned value of 10000.
+         * Values are added and used for sorting.
+         */
         return data.search.edges.sort((a, b) => {
           const aValue =
             (a.node.name && a.node.name.toLowerCase().indexOf(search) !== -1 ? 20000 : 0) +
@@ -107,4 +113,4 @@ const Home = (props: { match: Match<{ search: string }> }) => {
   )
 }
 
-export default Home
+export default Repositories
