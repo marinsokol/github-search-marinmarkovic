@@ -2,6 +2,11 @@ const webpack = require('webpack')
 const path = require('path')
 const dotenv = require('dotenv')
 
+/**
+ * I use Typescript page to get example of webpack.config. Then I changed what I needed.
+ * https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
+ */
+
 module.exports = () => {
   const env = dotenv.config().parsed
   const envKeys = Object.keys(env).reduce((result, next) => {
