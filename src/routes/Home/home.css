@@ -8,6 +8,16 @@
 .home-title svg {
   width: 32px;
   height: 32px;
+  margin-left: 5px;
+}
+
+.home-title .action-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.home-title .form-control {
+  width: 250px;
 }
 
 .home-title svg.selected {
